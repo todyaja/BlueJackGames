@@ -18,6 +18,7 @@
             android:exported="false" />
         <activity
             android:name=".app.GameDetailActivity"
+            android:parentActivityName=".app.ProductPageActivity"
             android:exported="false" />
         <activity
             android:name=".app.ProductPageActivity"

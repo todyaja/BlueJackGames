@@ -1,5 +1,6 @@
 package com.example.bluejackgames.app;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -21,6 +22,8 @@ public class GameDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game_detail);
         Intent intent = getIntent();
         String game = intent.getStringExtra("game");
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Image = findViewById(R.id.gameImage);
         Title = findViewById(R.id.txt_title);
@@ -65,4 +68,6 @@ public class GameDetailActivity extends AppCompatActivity {
         }
 
     }
+
+
 }
