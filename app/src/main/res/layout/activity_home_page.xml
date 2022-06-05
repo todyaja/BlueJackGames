@@ -4,75 +4,83 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".app.HomePageActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_weight="9">
+        android:layout_height="match_parent"
+        android:layout_weight="10"
+        android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="20dp"
-            android:layout_weight="3">
-            <TextView
-                android:id="@+id/product_page"
-                android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="9">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Product"
-                android:textAlignment="center"
-                android:textSize="20sp">
-            </TextView>
+                android:padding="20dp"
+                android:layout_weight="3">
+                <TextView
+                    android:id="@+id/product_page"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Product"
+                    android:textAlignment="center"
+                    android:textSize="20sp">
+                </TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:layout_weight="3">
+                <TextView
+                    android:id="@+id/about_page"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="About"
+                    android:textAlignment="center"
+                    android:textSize="20sp">
+                </TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:layout_weight="3">
+                <TextView
+                    android:id="@+id/logout_page"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Logout"
+                    android:textAlignment="center"
+                    android:textSize="20sp">
+                </TextView>
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="20dp"
-            android:layout_weight="3">
-            <TextView
-                android:id="@+id/about_page"
-                android:layout_width="match_parent"
+            android:layout_weight="10">
+
+            <ImageView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="About"
-                android:textAlignment="center"
-                android:textSize="20sp">
-            </TextView>
+                android:src="@drawable/logobluejackgames">
+
+            </ImageView>
+
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="20dp"
-            android:layout_weight="3">
-            <TextView
-                android:id="@+id/logout_page"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Logout"
-                android:textAlignment="center"
-                android:textSize="20sp">
-            </TextView>
-        </LinearLayout>
+
     </LinearLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_launcher_background"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true">
-        </ImageView>
-
-    </RelativeLayout>
-
-
 
 
 </LinearLayout>
