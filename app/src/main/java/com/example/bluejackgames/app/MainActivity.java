@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
                     dialog.show();
                 }
                 else{
-                    Intent intent = new Intent();
+                    Intent intent = new Intent(MainActivity.this, HomePageActivity.class);
                     intent.putExtra("username", login);
                     startActivity(intent);
                 }
