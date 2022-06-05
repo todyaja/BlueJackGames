@@ -19,7 +19,8 @@ public class HomePageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home_page);
 
         Intent intent = getIntent();
-        setTitle("Welcome, " + intent.getStringExtra("username"));
+        String username = intent.getStringExtra("username");
+        setTitle("Welcome, " + username);
 
         product = findViewById(R.id.product_page);
         about = findViewById(R.id.about_page);
@@ -29,6 +30,7 @@ public class HomePageActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(HomePageActivity.this, ProductPageActivity.class);
+                intent.putExtra("username", username);
                 startActivity(intent);
             }
         });
@@ -37,6 +39,7 @@ public class HomePageActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(HomePageActivity.this, AboutPageActivity.class);
+                intent.putExtra("username", username);
                 startActivity(intent);
             }
         });
