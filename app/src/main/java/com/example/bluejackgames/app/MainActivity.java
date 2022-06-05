@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.bluejackgames.MyDialog;
@@ -21,9 +22,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        ImageView firstImage = (ImageView) findViewById(R.id.logoImage);
+
+        int imageRescourse = getResources().getIdentifier("@drawable/logobluejackgames", null, this.getPackageName());
+        firstImage.setImageResource(imageRescourse);
+
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
         button = findViewById(R.id.button);
+
+
 
         button.setOnClickListener(new View.OnClickListener(){
             @Override
