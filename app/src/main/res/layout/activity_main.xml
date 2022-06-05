@@ -20,6 +20,7 @@
 
             <ImageView
                 android:id="@+id/logoImage"
+                android:src="@drawable/logobluejackgames"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"/>
@@ -36,7 +37,7 @@
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:hint="Email"
+                android:hint="Username"
                 android:textAlignment="center">
 
             </EditText>

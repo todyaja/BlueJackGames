@@ -2,6 +2,8 @@ package com.example.bluejackgames.app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -23,11 +25,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ImageView firstImage = (ImageView) findViewById(R.id.logoImage);
-
-        int imageRescourse = getResources().getIdentifier("@drawable/logobluejackgames", null, this.getPackageName());
-        firstImage.setImageResource(imageRescourse);
-
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
         button = findViewById(R.id.button);
@@ -40,15 +37,47 @@ public class MainActivity extends AppCompatActivity {
                 String login = email.getText().toString();
                 String pass = password.getText().toString();
 
-                if(login.isEmpty() || pass.isEmpty()){
-                    Toast.makeText(MainActivity.this, "Email dan password must be filled", Toast.LENGTH_LONG).show();
+                if(login.isEmpty()){
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
+                    dialog.setTitle("Error");
+                    dialog.setMessage("Username must be provide");
+                    dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                        }
+                    });
+                    dialog.show();
+                    //dialog.show(getSupportFragmentManager(), "Username must be filled");
                 }
-                else if(!login.equals("admin@gmail.com") && !pass.equals("admin123")){
-                    Toast.makeText(MainActivity.this, "invalid", Toast.LENGTH_LONG).show();
+                else if(pass.isEmpty()){
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
+                    dialog.setTitle("Error");
+                    dialog.setMessage("Password must be provide");
+                    dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                        }
+                    });
+                    dialog.show();
                 }
-                else if(login.equals("admin@gmail.com") && pass.equals("admin123")){
-                    MyDialog dialog = new MyDialog();
-                    dialog.show(getSupportFragmentManager(), "Login successs");
+                else if(login.length()<=3){
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
+                    dialog.setTitle("Error");
+                    dialog.setMessage("Username length must be greater than 3");
+                    dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                        }
+                    });
+                    dialog.show();
+                }
+                else{
+                    Intent intent = new Intent();
+                    intent.putExtra("username", login);
+                    startActivity(intent);
                 }
             }
         });
