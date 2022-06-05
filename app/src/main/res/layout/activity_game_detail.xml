@@ -57,8 +57,40 @@
             android:text="Game Description"
             android:textSize="16sp"
             android:layout_marginTop="15dp">
-
         </TextView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_weight="10">
+
+            <Button
+                android:id="@+id/buy_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="9"
+                android:layout_gravity="center"
+                android:text="BUY"
+                android:backgroundTint="#4499D0">
+
+            </Button>
+
+            <EditText
+                android:id="@+id/quantity"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:textAlignment="center">
+
+            </EditText>
+
+        </LinearLayout>
+
     </LinearLayout>
+
+
 
 </LinearLayout>
