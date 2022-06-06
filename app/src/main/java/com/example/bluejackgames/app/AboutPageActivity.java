@@ -34,12 +34,12 @@ public class AboutPageActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.home_page:
                 Intent intent1 = new Intent(AboutPageActivity.this, HomePageActivity.class);
-                intent1.putExtra("username", username);
+                //intent1.putExtra("username", username);
                 startActivity(intent1);
                 return true;
             case R.id.about_page:
                 Intent intent2 = new Intent(AboutPageActivity.this, AboutPageActivity.class);
-                intent2.putExtra("username", username);
+                //intent2.putExtra("username", username);
                 startActivity(intent2);
                 return true;
             case R.id.logout_page:
