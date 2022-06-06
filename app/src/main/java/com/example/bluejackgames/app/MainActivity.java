@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
                 if(login.isEmpty()){
                     AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
                     dialog.setTitle("Error");
-                    dialog.setMessage("Username must be provide");
+                    dialog.setMessage("Username must be provided");
                     dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
                 else if(pass.isEmpty()){
                     AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
                     dialog.setTitle("Error");
-                    dialog.setMessage("Password must be provide");
+                    dialog.setMessage("Password must be provided");
                     dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {

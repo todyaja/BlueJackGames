@@ -1,9 +1,16 @@
 package com.example.bluejackgames.app;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,6 +21,8 @@ public class GameDetailActivity extends AppCompatActivity {
 
     ImageView Image;
     TextView Title, Price, Desc, ReleaseDate;
+    EditText Quantity;
+    Button Buy_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,11 +31,15 @@ public class GameDetailActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String game = intent.getStringExtra("game");
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         Image = findViewById(R.id.gameImage);
         Title = findViewById(R.id.txt_title);
         Price = findViewById(R.id.price);
         Desc = findViewById(R.id.desc);
         ReleaseDate = findViewById(R.id.releaseDate);
+
+        Buy_btn = findViewById(R.id.buy_btn);
 
         if(game.equals("genshin")){
             Image.setImageResource(R.drawable.genshin);
@@ -64,5 +77,46 @@ public class GameDetailActivity extends AppCompatActivity {
             ReleaseDate.setText("November 4, 2021");
         }
 
+        Buy_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Quantity = findViewById(R.id.quantity);
+                Editable qty = Quantity.getText();
+                String qtyNotNull = "";
+                if(qty != null){
+                    qtyNotNull = qty.toString();
+                }
+                if(qtyNotNull.equals("")){
+                    Toast.makeText(GameDetailActivity.this, "Quantity must be filled", Toast.LENGTH_SHORT).show();
+                }
+                else if(Integer.parseInt(qtyNotNull) <= 0){
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(GameDetailActivity.this);
+                    dialog.setTitle("Addition Message");
+                    dialog.setMessage("Quantity must be equal or more than 1");
+                    dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                        }
+                    });
+                    dialog.show();
+                }
+                else{
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(GameDetailActivity.this);
+                    dialog.setTitle("Addition Message");
+                    dialog.setMessage("Your purchase was successful");
+                    dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                        }
+                    });
+                    dialog.show();
+                }
+            }
+        });
+
     }
+
+
 }
