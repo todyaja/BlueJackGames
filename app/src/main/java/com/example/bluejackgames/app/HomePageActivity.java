@@ -29,8 +29,12 @@ public class HomePageActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
 
         String username = sharedPreferences.getString(KEY_NAME,null);
+        if(username==null){
+            Intent intent = new Intent(HomePageActivity.this,MainActivity.class);
+            startActivity(intent);
+        }
 
-        Log.d("Username in sharedpref", "onCreate: "+username);
+        Toast.makeText(HomePageActivity.this, username , Toast.LENGTH_SHORT).show();
         //Intent intent = getIntent();
         //String username = intent.getStringExtra("username");
         setTitle("Welcome, " + username);
@@ -62,6 +66,10 @@ public class HomePageActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(HomePageActivity.this, MainActivity.class);
                 startActivity(intent);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.clear();
+                editor.commit();
+                finish();
             }
         });
     }

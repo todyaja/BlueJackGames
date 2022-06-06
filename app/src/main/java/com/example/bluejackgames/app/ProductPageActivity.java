@@ -1,10 +1,13 @@
 package com.example.bluejackgames.app;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -15,6 +18,9 @@ import android.widget.Toast;
 import com.example.bluejackgames.R;
 
 public class ProductPageActivity extends AppCompatActivity {
+    SharedPreferences sharedPreferences;
+    private static final String SHARED_PREF_NAME = "mypref";
+    private static final String KEY_NAME = "keyname";
 
     CardView genshin, rox, elden, titanfall, forza;
 
@@ -23,6 +29,8 @@ public class ProductPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_page);
         setTitle("Product Page");
+
+        sharedPreferences = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
 
         genshin = findViewById(R.id.genshin_card);
         rox = findViewById(R.id.rox_card);
@@ -86,22 +94,22 @@ public class ProductPageActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        Intent intent = getIntent();
-        String username = intent.getStringExtra("username");
         switch (item.getItemId()){
             case R.id.home_page:
                 Intent intent1 = new Intent(ProductPageActivity.this, HomePageActivity.class);
-                intent1.putExtra("username", username);
                 startActivity(intent1);
                 return true;
             case R.id.about_page:
                 Intent intent2 = new Intent(ProductPageActivity.this, AboutPageActivity.class);
-                intent2.putExtra("username", username);
                 startActivity(intent2);
                 return true;
             case R.id.logout_page:
                 Intent intent3 = new Intent(ProductPageActivity.this, MainActivity.class);
                 startActivity(intent3);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.clear();
+                editor.commit();
+                finish();
         }
         return super.onOptionsItemSelected(item);
     }

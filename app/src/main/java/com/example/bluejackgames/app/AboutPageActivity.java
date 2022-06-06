@@ -1,9 +1,12 @@
 package com.example.bluejackgames.app;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -12,12 +15,17 @@ import android.view.MenuItem;
 import com.example.bluejackgames.R;
 
 public class AboutPageActivity extends AppCompatActivity {
+    SharedPreferences sharedPreferences;
+    private static final String SHARED_PREF_NAME = "mypref";
+    private static final String KEY_NAME = "keyname";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_page);
         setTitle("About Page");
+
+        sharedPreferences = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
     }
 
     @Override
@@ -45,6 +53,10 @@ public class AboutPageActivity extends AppCompatActivity {
             case R.id.logout_page:
                 Intent intent3 = new Intent(AboutPageActivity.this, MainActivity.class);
                 startActivity(intent3);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.clear();
+                editor.commit();
+                finish();
         }
         return super.onOptionsItemSelected(item);
     }
